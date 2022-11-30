@@ -6,6 +6,7 @@ package cocherasjava;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,6 +16,10 @@ import java.util.Scanner;
  */
 
 public class CocherasJava {
+
+    public static int cocheras;
+    public static int monto;
+    public static String tipoVehiculo, patente, fecha, hora;
 
     // ----- INICIO -> Integrante del Grupo que escbrio el CODIGO : JESICA VIOLA
     // Metodo Main para ejecutar el programa
@@ -29,26 +34,23 @@ public class CocherasJava {
     // metodo menu principal
     public static void menuPrincipal(String[][] ArrayCocheras) {
 
-        // limpiar pantalla
-        limpiarPantalla();
-
         // mostrar menu de opciones
-        System.out.println("Bienvenido al sistema de gestión de cocheras");
-        System.out.println("------------------------------------------");
-        System.out.println("1. Español");
-        System.out.println("2. English");
-        System.out.println("3. Salir / Exit");
-        System.out.println("------------------------------------------");
-        System.out.print("Ingrese una opción / Choose a menu option: ");
+        int opcion = 0;
+        opcion = Integer.parseInt(JOptionPane.showInputDialog(null,
+                "Bienvenido al sistema de gestión de cocheras\n"
+                        + "------------------------------------------\n"
+                        + "1. Español\n"
+                        + "2. English\n"
+                        + "3. Salir / Exit\n"
+                        + "------------------------------------------\n"
+                        + "Ingrese una opción / Choose a menu option: "));
 
         // leer la opcion ingresada por el usuario
 
-        int opcion = 0;
         boolean opcionValida = false;
         while (!opcionValida) {
             try {
-                Scanner sc = new Scanner(System.in);
-                opcion = sc.nextInt();
+
                 if (opcion >= 1 && opcion <= 3) {
                     opcionValida = true;
                     switch (opcion) {
@@ -88,27 +90,20 @@ public class CocherasJava {
 
     // Metodo para mostrar el menu en español
     public static void menuEspañol(int cocheras, String[][] ArrayCocheras) {
-        // limpiar pantalla
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-
-        System.out.println("Bienvenido al sistema de gestión de cocheras");
-        // int cantidadCocheras = cocheras;
-
-        // menu de opciones
-        System.out.println("1. Ingresar vehículo");
-        System.out.println("2. Retirar vehículo");
-        System.out.println("3. Listar Cocheras Dispobibles");
-        System.out.println("4. Salir");
-        System.out.println("------------------------------------------");
-        System.out.print("Ingrese una opción: ");
 
         int opcion = 0;
+
         boolean opcionValida = false;
         while (!opcionValida) {
             try {
-                Scanner sc = new Scanner(System.in);
-                opcion = sc.nextInt();
+                opcion = Integer.parseInt(JOptionPane.showInputDialog(null,
+                        "Bienvenido al sistema de gestión de cocheras\n"
+                                + "1. Ingresar vehículo\n"
+                                + "2. Retirar vehículo\n"
+                                + "3. Listar Cocheras Dispobibles\n"
+                                + "4. Salir\n"
+                                + "------------------------------------------\n"
+                                + "Ingrese una opción: "));
                 if (opcion >= 1 && opcion <= 4) {
                     opcionValida = true;
                     switch (opcion) {
@@ -151,24 +146,23 @@ public class CocherasJava {
         System.out.print("\033[H\033[2J");
         System.out.flush();
 
-        System.out.println("Welcome to the parking management system");
-
         // int cantidadCocheras = cocheras;
 
         // menu de opciones
-        System.out.println("1. Enter vehicle");
-        System.out.println("2. Remove vehicle");
-        System.out.println("3. List Available Parking Spaces");
-        System.out.println("4. Exit");
-        System.out.println("------------------------------------------");
-        System.out.print("Enter an option: ");
-
         int opcion = 0;
+
         boolean opcionValida = false;
         while (!opcionValida) {
             try {
-                Scanner sc = new Scanner(System.in);
-                opcion = sc.nextInt();
+                opcion = Integer.parseInt(JOptionPane.showInputDialog(null,
+                        "Welcome to the parking management system\n"
+                                + "1. Enter vehicle\n"
+                                + "2. Remove vehicle\n"
+                                + "3. List Available Parking Spaces\n"
+                                + "4. Exit\n"
+                                + "------------------------------------------\n"
+                                + "Enter an option: "));
+
                 if (opcion >= 1 && opcion <= 4) {
                     opcionValida = true;
                     switch (opcion) {
@@ -213,10 +207,6 @@ public class CocherasJava {
     // VERGUECIO
     // Metodo para ingresar vehiculos en español
     public static void ingresoVehiculoEsp(int cocheras, String[][] ArrayCocheras) {
-        // limpiar pantalla
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-
         // Iniciar variable booleana para controlar el ingreso de vehiculos
         boolean cocheraLibre = false;
         int cocheraCarga = 0;
@@ -229,22 +219,17 @@ public class CocherasJava {
                 cocheraCarga = i;
             }
         }
-        System.out.println("Carga de Datos del Vehículo: ");
-        System.out.println("------------------------------------------");
 
         // si cocherasLibre es true, mostrar mensaje de cochera libre
         if (cocheraLibre == true) {
 
             // ingresar datos en el array de cocheras disponibles
             try (Scanner scanner = new Scanner(System.in)) {
-                System.out.print("Ingrese el tipo de vehículo: ");
-                String tipoVehiculo = scanner.next();
-                System.out.print("Ingrese la patente: ");
-                String patente = scanner.next();
-                System.out.print("Ingrese la Fecha Entrada: ");
-                String fecha = scanner.next();
-                System.out.print("Ingrese la Hora Entrada: ");
-                String hora = scanner.next();
+
+                tipoVehiculo = JOptionPane.showInputDialog("Ingrese el tipo de Vehiculo: ");
+                patente = JOptionPane.showInputDialog("Ingrese la patente: ");
+                fecha = JOptionPane.showInputDialog("Ingrese la Fecha Entrada: ");
+                hora = JOptionPane.showInputDialog("Ingrese la Hora Entrada: ");
 
                 // cargar datos en el array
                 ArrayCocheras[cocheraCarga][0] = tipoVehiculo;
@@ -253,12 +238,11 @@ public class CocherasJava {
                 ArrayCocheras[cocheraCarga][3] = hora;
 
                 // terminar el ingreso de vehiculos
-                System.out.println("------------------------------------------");
-                System.out.println("Vehículo ingresado correctamente");
-                System.out.println("------------------------------------------");
-                System.out.println("Presione una tecla para continuar");
-                scanner.nextLine();
-                scanner.nextLine();
+                int mensaje = 0;
+                JOptionPane.showMessageDialog(null, "Vehículo ingresado correctamente\n"
+                        + "\n"
+                        + "\n"
+                        + "Presione una tecla para continuar");
 
                 // volver al menu principal
                 menuEspañol(cocheras, ArrayCocheras);
@@ -266,10 +250,10 @@ public class CocherasJava {
 
         } else {
             // si no hay cocheras libres, mostrar mensaje de error
-            System.out.println("No hay cocheras disponibles");
-            System.out.println("Presione una tecla para continuar");
-            Scanner scanner = new Scanner(System.in);
-            scanner.nextLine();
+            JOptionPane.showMessageDialog(null, "No hay cocheras disponibles!!   \n"
+                    + "\n"
+                    + "\n"
+                    + "Presione una tecla para continuar");
 
             // volver al menu principal
             menuEspañol(cocheras, ArrayCocheras);
@@ -280,9 +264,6 @@ public class CocherasJava {
 
     // Metodo para ingresar vehiculos en Ingles
     public static void ingresoVehiculoEng(int cocheras, String[][] ArrayCocheras) {
-        // limpiar pantalla
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
 
         // Iniciar variable booleana para controlar el ingreso de vehiculos
         boolean cocheraLibre = false;
@@ -304,15 +285,11 @@ public class CocherasJava {
 
             // ingresar datos en el array de cocheras disponibles
             try (Scanner scanner = new Scanner(System.in)) {
-                System.out.print("Enter the type of vehicle: ");
-                String tipoVehiculo = scanner.next();
-                System.out.print("Enter the license plate: ");
-                String patente = scanner.next();
-                System.out.print("Enter the Entry Date: ");
-                String fecha = scanner.next();
-                System.out.print("Enter the Entry Time: ");
-                String hora = scanner.next();
 
+                tipoVehiculo = JOptionPane.showInputDialog("Enter the type of vehicle: ");
+                patente = JOptionPane.showInputDialog("Enter the license plate: ");
+                fecha = JOptionPane.showInputDialog("Enter the Entry Date: ");
+                hora = JOptionPane.showInputDialog("Enter the Entry Time: ");
                 // cargar datos en el array
                 ArrayCocheras[cocheraCarga][0] = tipoVehiculo;
                 ArrayCocheras[cocheraCarga][1] = patente;
@@ -321,12 +298,10 @@ public class CocherasJava {
 
                 // terminar el ingreso de vehiculos
 
-                System.out.println("------------------------------------------");
-                System.out.println("Vehicle entered correctly");
-                System.out.println("------------------------------------------");
-                System.out.println("Press any key to continue");
-                scanner.nextLine();
-                scanner.nextLine();
+                JOptionPane.showMessageDialog(null, "Vehicle entered correctly\n"
+                        + "\n"
+                        + "\n"
+                        + "Press any key to continue");
 
                 // volver al menu principal
                 menuEnglish(cocheras, ArrayCocheras);
@@ -334,11 +309,10 @@ public class CocherasJava {
 
         } else {
             // si no hay cocheras libres, mostrar mensaje de error
-            System.out.println("There are no available garages");
-            System.out.println("Press any key to continue");
-            Scanner scanner = new Scanner(System.in);
-            scanner.nextLine();
-
+            JOptionPane.showMessageDialog(null, "There are no available garages!!  \n"
+                    + "\n"
+                    + "\n"
+                    + "Press any key to continue");
             // volver al menu principal
             menuEnglish(cocheras, ArrayCocheras);
         }
@@ -353,30 +327,20 @@ public class CocherasJava {
     // NEIRA
     // metodo Solicita cantidad de cocheras disponibles en español
     public static int cantidadCocherasEsp() {
-        // limpiar pantalla
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("------------------------------------------");
-        System.out.print("Ingrese la cantidad de cocheras disponibles: ");
-
-        int cocheras = scanner.nextInt();
+        cocheras = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad de cocheras disponibles:  "
+                + "\n"
+                + "\n"));
 
         return cocheras;
     }
 
     // metodo Solicita cantidad de cocheras disponibles en Ingles
     public static int cantidadCocherasEng() {
-        // limpiar pantalla
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("------------------------------------------");
-        System.out.print("Enter the number of available parking spaces: ");
-
-        int cocheras = scanner.nextInt();
+        cocheras = Integer.parseInt(JOptionPane.showInputDialog("Enter the number of available parking spaces: "
+                + "\n"
+                + "\n"));
 
         return cocheras;
     }
@@ -387,75 +351,55 @@ public class CocherasJava {
     // ----- INICIO -> Integrante del Grupo que escbrio el CODIGO : LEONARDO SOLAN
     // metodo para mostrar la cantidad de cocheras disponibles en Español
     public static void mostrarCocherasDisponiblesEsp(int cocheras, String[][] ArrayCocheras) {
-        // limpiar pantalla
-        limpiarPantalla();
-
         // imprimir la matriz de cocheras
+        String imprimirJO = "";
+        String imprimelibre = "";
 
-        System.out.println("------------------------------------------");
-        System.out.println("         Tipo -  Patente -   Fecha -    Hora");
-        System.out.println("------------------------------------------");
-
+     
         for (int i = 0; i < cocheras; i++) {
-            System.out.print("COCHERA " + (i + 1) + " :");
             for (int j = 0; j < ArrayCocheras[i].length; j++) {
-
-                // verificar si el array es null
-                if (ArrayCocheras[i][j] == null) {
-                    System.out.print(" DISPONIBLE");
-                    break;
-                } else {
-                    System.out.print(" " + ArrayCocheras[i][j] + " - ");
-                }
-                // System.out.print(ArrayCocheras[i][j] + " - ");
+                imprimirJO += ArrayCocheras[i][j];
+                imprimirJO += "     |      ";
             }
-            System.out.println("");
-        }
+            imprimirJO += "\n";
 
-        // pausar la ejecucion del programa
-        System.out.println("------------------------------------------");
-        System.out.println("Presione enter para continuar");
-        Scanner scanner = new Scanner(System.in);
-        scanner.nextLine();
+        }
+        JOptionPane.showMessageDialog(null, "----------------------------------------------\n"
+                + "     Tipo  |   Patente |   Fecha |   Hora\n "
+                + "---------------------------------------------\n"
+                + imprimirJO
+                + "\n"
+                + "\n"
+                + "     Presione una tecla para continuar");
 
         menuEspañol(cocheras, ArrayCocheras);
     }
 
     // metodo para mostrar la cantidad de cocheras disponibles en Ingles
     public static void mostrarCocherasDisponiblesEng(int cocheras, String[][] ArrayCocheras) {
-        // limpiar pantalla
-        limpiarPantalla();
 
         // imprimir la matriz de cocheras
 
-        System.out.println("------------------------------------------");
-        System.out.println("         Type -  License -   Date -    Time");
-        System.out.println("------------------------------------------");
+        // VARIABLES PARA USAR JOPTIONPANE
+        String imprimirJO = "";
+        String imprimelibre = "";
 
+      
         for (int i = 0; i < cocheras; i++) {
-            System.out.print("PARKING " + (i + 1) + " :");
-
             for (int j = 0; j < ArrayCocheras[i].length; j++) {
-
-                // verificar si el array es null
-                if (ArrayCocheras[i][j] == null) {
-                    System.out.print(" AVAILABLE");
-
-                    break;
-                } else {
-                    System.out.print(" " + ArrayCocheras[i][j] + " - ");
-                }
-                // System.out.print(ArrayCocheras[i][j] + " - ");
+                imprimirJO += ArrayCocheras[i][j];
+                imprimirJO += "    |     ";
             }
-            System.out.println("");
+            imprimirJO += "\n";
+
         }
-
-        // pausar la ejecucion del programa
-        System.out.println("------------------------------------------");
-        System.out.println("Press enter to continue");
-
-        Scanner scanner = new Scanner(System.in);
-        scanner.nextLine();
+        JOptionPane.showMessageDialog(null, "------------------------------------------\n"
+                + "   Type |  License  |   Date  |  Time\n "
+                + "------------------------------------------ \n"
+                + imprimirJO
+                + "\n"
+                + "\n"
+                + "        Press any key to continue");
 
         menuEnglish(cocheras, ArrayCocheras);
     }
@@ -466,16 +410,11 @@ public class CocherasJava {
     // INICIO -> Integrante del Grupo que escbrio el CODIGO : SAMUEL LUCAS LIMACHI
     // metodo para mostrar un mensaje de opcion invalida en español
     public static void opcionInvalida() {
-        // limpiar pantalla
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
 
         // mostar mensaje de opcion invalida
-        System.out.println("------------------------------------------");
-
-        System.out.println("No es una opción válida");
-        System.out.println("------------------------------------------");
-
+        JOptionPane.showMessageDialog(null, "------------------------------------------\n"
+                + "          No es una opción válida\n "
+                + "------------------------------------------\n");
         // esperar 2 segundos
         try {
             Thread.sleep(2000);
@@ -486,14 +425,11 @@ public class CocherasJava {
 
     // ----- metodo para mostrar un mensaje de opcion invalida en ingles
     public static void opcionInvalidaEng() {
-        // limpiar pantalla
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
 
         // mostar mensaje de opcion invalida
-        System.out.println("------------------------------------------");
-        System.out.println("It is not a valid option");
-        System.out.println("------------------------------------------");
+        JOptionPane.showMessageDialog(null, "------------------------------------------\n"
+                + "It is not a valid option\n "
+                + "------------------------------------------\n");
 
         // esperar 2 segundos
         try {
@@ -505,28 +441,20 @@ public class CocherasJava {
 
     // metodo para mostrar un mensaja de despedida en español
     public static void mensajeDespedidaEsp() {
-        // limpiar pantalla
-        limpiarPantalla();
-
-        System.out.println("------------------------------------------");
-        // mostrar mensaje de despedida en ingles
-        System.out.println("Gracias por utilizar el sistema");
-        System.out.println("------------------------------------------");
-
+        // mostrar mensaje de despedida
+        JOptionPane.showMessageDialog(null, "------------------------------------------\n"
+                + "  Gracias por utilizar el sistema \n "
+                + "------------------------------------------\n");
         // finalizar el programa
         System.exit(0);
     }
 
     // metodo para mostrar un mensaja de despedida en ingles
     public static void mensajeDespedidaEng() {
-        // limpiar pantalla
-        limpiarPantalla();
-
-        System.out.println("------------------------------------------");
-        // mostrar mensaje de despedida en ingles
-        System.out.println("Thank you for using the system");
-        System.out.println("------------------------------------------");
-
+        // mostrar mensaje de despedida
+        JOptionPane.showMessageDialog(null, "------------------------------------------\n"
+                + " Thank you for using the system \n "
+                + "------------------------------------------\n");
         // finalizar el programa
         System.exit(0);
     }
@@ -537,17 +465,11 @@ public class CocherasJava {
     // ----- INICIO -> Integrante del Grupo que escbrio el CODIGO : FRANCO MESAS
     // metodo para buscar un vehiculo por patente en español
     public static void buscarVehiculoEsp(int cocheras, String[][] ArrayCocheras) {
-        // limpiar pantalla
-        limpiarPantalla();
-
-        // mostrar mensaje de busqueda de vehiculo
-        System.out.println("------------------------------------------");
-        System.out.println("Ingrese la patente del vehículo a buscar: ");
-        System.out.println("------------------------------------------");
+        // mostrar mensaje de busqueda de vehiculo y ingresar patente a buscar
+        patente = JOptionPane.showInputDialog("Ingrese la patente del vehículo a buscar: ");
 
         // ingresar patente a buscar
         Scanner scanner = new Scanner(System.in);
-        String patente = scanner.next();
 
         // recorrer el array de cocheras
         for (int i = 0; i < cocheras; i++) {
@@ -562,13 +484,25 @@ public class CocherasJava {
                     System.out.println("Hora: " + ArrayCocheras[i][3]);
 
                     // mensaje "Se procede a eliminar el vehiculo y liberar la cochera"
-                    System.out.println("------------------------------------------");
-                    System.out.println("Se procede a eliminar el vehiculo y liberar la cochera");
-                    System.out.println("------------------------------------------");
+                    JOptionPane.showMessageDialog(null, "------------------------------------------------------\n"
+                            + "Se procede a eliminar el vehiculo y liberar la cochera\n "
+                            + "-------------------------------------------------------\n");
+                    // ingresamos monto a cobrar
+                    monto = Integer.parseInt(JOptionPane.showInputDialog("ingrese el monto a cobrar $: "
+                            + "\n"
+                            + "\n"));
+
                     // mensaje "Se procedera a cobrar el estacionamiento"
-                    System.out.println("------------------------------------------");
-                    System.out.println("Se procedera a cobrar el estacionamiento");
-                    System.out.println("------------------------------------------");
+                    JOptionPane.showMessageDialog(null, "------------------------------------------\n"
+                            + " Se procedera a cobrar el monto de " + monto + " pesos.\n "
+                            + "\n"
+                            + "\n"
+                            + "MUCHAS GRACIAS POR USAR NUESTRA COCHERAS\n"
+                            + "------------------------------------------ \n"
+                            + "\n"
+                            + "\n"
+                            + "\n"
+                            + "Presione una tecla para continuar");
 
                     // eliminar el vehiculo y liberar la cochera
                     ArrayCocheras[i][0] = null;
@@ -576,11 +510,7 @@ public class CocherasJava {
                     ArrayCocheras[i][2] = null;
                     ArrayCocheras[i][3] = null;
 
-                    // pausar la ejecucion del programa
-                    System.out.println("------------------------------------------");
-                    System.out.println("Presione enter para continuar");
-                    scanner.nextLine();
-                    scanner.nextLine();
+                    patente = JOptionPane.showInputDialog("Ingrese la patente del vehículo a buscar: ");
 
                     menuEspañol(cocheras, ArrayCocheras);
                 }
@@ -588,12 +518,11 @@ public class CocherasJava {
         }
 
         // si no encuentra el vehiculo, mostrar mensaje de error
-        System.out.println("------------------------------------------");
-        System.out.println("No se encontró el vehículo");
-        System.out.println("------------------------------------------");
-        System.out.println("Presione enter para continuar");
-        scanner.nextLine();
-        scanner.nextLine();
+        JOptionPane.showMessageDialog(null, "------------------------------------------\n"
+                + "  No se encontró el vehículo\n "
+                + "------------------------------------------ \n"
+                + "\n"
+                + "Presione una tecla para continuar");
 
         menuEspañol(cocheras, ArrayCocheras);
     }
@@ -601,17 +530,7 @@ public class CocherasJava {
     // metodo para buscar un vehiculo por patente en ingles
     public static void buscarVehiculoEng(int cocheras, String[][] ArrayCocheras) {
 
-        // limpiar pantalla
-        limpiarPantalla();
-
-        // mostrar mensaje de busqueda de vehiculo
-        System.out.println("------------------------------------------");
-        System.out.println("Enter the license plate of the vehicle to search: ");
-        System.out.println("------------------------------------------");
-
-        // ingresar patente a buscar
-        Scanner scanner = new Scanner(System.in);
-        String patente = scanner.next();
+        // mostrar mensaje de busqueda de vehiculo y ingresar patente a buscar
 
         // recorrer el array de cocheras
         for (int i = 0; i < cocheras; i++) {
@@ -626,25 +545,27 @@ public class CocherasJava {
                     System.out.println("Time: " + ArrayCocheras[i][3]);
 
                     // mensaje "Se procede a eliminar el vehiculo y liberar la cochera"
-                    System.out.println("------------------------------------------");
-                    System.out.println("The vehicle will be removed and the parking space will be released");
-                    System.out.println("------------------------------------------");
+                    JOptionPane.showMessageDialog(null,
+                            "------------------------------------------------------------------\n"
+                                    + "The vehicle will be removed and the parking space will be released\n "
+                                    + "------------------------------------------------------------------ \n");
+
                     // mensaje "Se procedera a cobrar el estacionamiento"
-                    System.out.println("------------------------------------------");
-                    System.out.println("The parking will be charged");
-                    System.out.println("------------------------------------------");
+                    JOptionPane.showMessageDialog(null, "------------------------------------------\n"
+                            + " \n "
+                            + "THANK YOU SO MUCH FOR USING OUR GARAGES\n"
+                            + "\n"
+                            + "The amount of " + monto + " pesos will be collected.\n"
+                            + "------------------------------------------ \n"
+                            + "\n"
+                            + "\n"
+                            + "Press enter to continue");
 
                     // eliminar el vehiculo y liberar la cochera
                     ArrayCocheras[i][0] = null;
                     ArrayCocheras[i][1] = null;
                     ArrayCocheras[i][2] = null;
                     ArrayCocheras[i][3] = null;
-
-                    // pausar la ejecucion del programa
-                    System.out.println("------------------------------------------");
-                    System.out.println("Press enter to continue");
-                    scanner.nextLine();
-                    scanner.nextLine();
 
                     menuEnglish(cocheras, ArrayCocheras);
 
@@ -653,12 +574,11 @@ public class CocherasJava {
         }
 
         // si no encuentra el vehiculo, mostrar mensaje de error
-        System.out.println("------------------------------------------");
-        System.out.println("The vehicle was not found");
-        System.out.println("------------------------------------------");
-        System.out.println("Press enter to continue");
-        scanner.nextLine();
-        scanner.nextLine();
+        JOptionPane.showMessageDialog(null, "------------------------------------------\n"
+                + "  The vehicle was not found\n "
+                + "------------------------------------------ \n"
+                + "\n"
+                + "Press enter to continue");
 
         menuEnglish(cocheras, ArrayCocheras);
     }
